@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SamX Componentes</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">SamX Componentes</div>
+      <ul class="nav-links">
+        <li><a href="#">Teclados</a></li>
+        <li><a href="#">Mouse</a></li>
+        <li><a href="#">Monitores</a></li>
+        <li><a href="#">Soporte Técnico</a></li>
+      </ul>
+      <div class="cart-icon" onclick="toggleCart()">🛒</div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="product-grid">
+      <a href="redragon.html" class="product-card" style="text-decoration: none; color: inherit;">
+        <img src="assets/Kumarak552.png" alt="Teclado Kumara k552 switches azules">
+        <h3>Teclado Redragon Kumara K552</h3>
+        <p>Contiene switches azules outemu blue</p>
+      </a>
+
+      <a href="logitech.html" class="product-card" style="text-decoration: none; color: inherit;">
+        <img src="assets/logitechg502.png" alt="Mouse Logitech G502 Sensor Hero">
+        <h3>Mouse Logitech G502</h3>
+        <p>Alta precisión, diseño ergonómico.</p>
+      </a>
+
+      <div class="product-card">
+        <img src="assets/AOC144hz.png" alt="Monitor 144Hz">
+        <h3>Monitor AOC de 144Hz</h3>
+        <p>Resolución Full HD, 1ms de respuesta.</p>
+      </div>
+    </section>
+
+    <section class="cart-panel" id="cartPanel">
+      <h2>Carrito de Compras</h2>
+      <div id="cartItems"></div>
+      <button class="checkout-btn">Pagar</button>
+    </section>
+  </main>
+
+  <script>
+    function toggleCart() {
+      const cart = document.getElementById("cartPanel");
+      cart.classList.toggle("visible");
+    }
+
+    const productCards = document.querySelectorAll(".product-card");
+    const cartItems = document.getElementById("cartItems");
+
+    productCards.forEach(card => {
+      card.addEventListener("click", () => {
+        const productName = card.querySelector("h3").textContent;
+
+        const productItem = document.createElement("p");
+        productItem.textContent = productName;
+        cartItems.appendChild(productItem);
+      });
+    });
+  </script>
+</body>
+</html>
